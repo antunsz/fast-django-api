@@ -9,5 +9,14 @@ WORKDIR /src
 RUN apt update \
     && apt install -y --no-install-recommends less
 
-RUN pip install poetry\
-    && poetry config virtualenvs.in-project true
+COPY ./requirements.txt .
+
+RUN pip install -r requirements.txt
+
+COPY . /src
+
+
+RUN chmod +x /src/scripts/runserver.sh
+
+
+CMD ["bash", "/src/scripts/runserver.sh" ]

@@ -18,7 +18,7 @@ services:
       - fastapi/fastapi.env
     links:
       - postgres
-    command: ./scripts/runlocalserver.sh
+
   postgres:
     container_name: fastapi-django-template-postgres
     image: postgres:12
